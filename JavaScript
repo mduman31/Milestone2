@@ -1,1 +1,20 @@
+'use strict';
 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("🌺 Hawaiian Galactic Hub engine initialized.");
+    initWeatherWidget(document, 'script', 'weatherwidget-io-js');
+});
+
+function initWeatherWidget(d, s, id) {
+    if (d.getElementById(id)) return;
+    const scriptElement = d.createElement(s);
+    scriptElement.id = id;
+    scriptElement.src = 'https://weatherwidget.io';
+    const firstScript = d.getElementsByTagName(s)[0];
+
+    if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(scriptElement, firstScript);
+    } else {
+        d.head.appendChild(scriptElement);
+    }
+}
